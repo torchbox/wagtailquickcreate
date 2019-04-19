@@ -2,8 +2,8 @@ from django.conf.urls import url
 from django.utils.safestring import mark_safe
 from django.conf import settings
 from django.apps import apps
-from wagtail.admin.site_summary import SiteSummaryPanel
 
+from wagtail.admin.site_summary import SiteSummaryPanel
 from wagtail.core import hooks
 
 from .views import CreatePageShortcutView
@@ -29,6 +29,15 @@ class WelcomePanel:
 
         page_models_html_chunk = list(set(page_models_html_chunk))
 
+        if settings.WAGTAIL_QUICK_CREATE_IMAGES:
+            page_models_html_chunk.append("""
+            <a href="/admin/images/multiple/add/"><button class="button bicolor icon icon-plus">Add Image</button></a>
+            """)
+        if settings.WAGTAIL_QUICK_CREATE_DOCUMENTS:
+            page_models_html_chunk.append("""
+            <a href="/admin/documents/multiple/add/"><button class="button bicolor icon icon-plus">Add Document</button></a>
+            """)
+
         return mark_safe("""
             <section class="panel wagtail_quick_create summary nice-padding">
             <h2>Quick Create</h2>
@@ -52,3 +61,4 @@ def add_another_welcome_panel(request, panels):
     else:
         panels.append(WelcomePanel)
     return panels
+
