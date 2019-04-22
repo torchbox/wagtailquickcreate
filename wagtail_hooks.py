@@ -6,22 +6,25 @@ from django.apps import apps
 from wagtail.admin.site_summary import SiteSummaryPanel
 from wagtail.core import hooks
 
-from .views import CreatePageShortcutView
+from .views import QuickCreateView
 
 
 class QuickCreatePanel:
     order = 50
 
     def render(self):
-        # Make a list of the models with there edit links
+        # Make a list of the models with edit links
+        # EG [{'link': 'news/NewsPage', 'name': 'News page'}]
         page_models = []
-        page_models_html_chunk = []
         for i in settings.WAGTAIL_QUICK_CREATE_PAGE_TYPES:
             item = {}
             model = apps.get_model(i)
             item['link'] = model._meta.app_label + '/' + model.__name__
             item['name'] = model.get_verbose_name()
             page_models.append(item)
+
+        # Build up an html chunk for the links to be rendered in the panel
+        page_models_html_chunk = []
 
         for i in page_models:
             page_models_html_chunk.append("""
@@ -47,7 +50,7 @@ class QuickCreatePanel:
 @hooks.register('register_admin_urls')
 def urlconf_time():
     return [
-        url(r'^quickcreate/create/(?P<app>\D+)/(?P<model>\D+)/', CreatePageShortcutView.as_view()),
+        url(r'^quickcreate/create/(?P<app>\D+)/(?P<model>\D+)/', QuickCreateView.as_view()),
     ]
 
 

@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 from wagtail.core.models import UserPagePermissionsProxy
 
 
+# Helper function to work out page permissions
 def filter_pages_by_permission(user, pages):
     user_permissions = UserPagePermissionsProxy(user)
     return [
@@ -15,24 +16,32 @@ def filter_pages_by_permission(user, pages):
     ]
 
 
-class CreatePageShortcutView(TemplateView):
+class QuickCreateView(TemplateView):
     template_name = "wagtail_quick_create/create.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        # Work out the parent pages to offer to the user to add
+        # their new page under, for this we need to query the objects/models
+        # allowed parent pages
         _model = kwargs.pop('model')
         app = kwargs.pop('app')
         model = apps.get_model(app, _model)
-        parent_model = model.allowed_parent_page_models()
-        self.pages = []
+        parent_models = model.allowed_parent_page_models()
 
-        for pm in parent_model:
-            # TODO queries Needs finessing, not sure how to do this
+        # With the 'allowed parent page' models we have found, get all
+        # those objects from the database so we can offer them as parent pages
+        # for the new child page being added
+        self.pages = []
+        for pm in parent_models:
             for object in pm.objects.all():
                 self.pages.append(object)
-        self.pages = filter_pages_by_permission(self.request.user, self.pages)
-        allowed_sections = []
 
+        # Check the current user has permission to edit pages in question
+        self.pages = filter_pages_by_permission(self.request.user, self.pages)
+
+        allowed_sections = []
         for i in self.pages:
             item = {}
             item['id'] = i.id
@@ -40,6 +49,8 @@ class CreatePageShortcutView(TemplateView):
             item['app_label'] = i._meta.app_label
             item['model'] = _model
             item['page'] = i
+            # Also send through the section page ancestors for a clearer link path
+            # to the user.
             item['ancestors'] = i.get_ancestors()
             allowed_sections.append(item)
 
