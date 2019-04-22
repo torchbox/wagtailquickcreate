@@ -9,7 +9,7 @@ from wagtail.core import hooks
 from .views import CreatePageShortcutView
 
 
-class WelcomePanel:
+class QuickCreatePanel:
     order = 50
 
     def render(self):
@@ -52,13 +52,13 @@ def urlconf_time():
 
 
 @hooks.register('construct_homepage_panels')
-def add_another_welcome_panel(request, panels):
+def add_quick_create_panel(request, panels):
     # Replace the site summary panel with our custom panel
     if settings.WAGTAIL_QUICK_CREATE_REPLACE_SUMMARY_PANEL:
         for i, v in enumerate(panels):
             if isinstance(v, SiteSummaryPanel):
-                panels[i] = WelcomePanel()
+                panels[i] = QuickCreatePanel()
     else:
-        panels.append(WelcomePanel)
+        panels.append(QuickCreatePanel)
     return panels
 
