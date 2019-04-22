@@ -41,7 +41,7 @@ class QuickCreateView(TemplateView):
         # Check the current user has permission to edit pages in question
         self.pages = filter_pages_by_permission(self.request.user, self.pages)
 
-        allowed_sections = []
+        parent_pages = []
         for i in self.pages:
             item = {}
             item['id'] = i.id
@@ -52,8 +52,8 @@ class QuickCreateView(TemplateView):
             # Also send through the section page ancestors for a clearer link path
             # to the user.
             item['ancestors'] = i.get_ancestors()
-            allowed_sections.append(item)
+            parent_pages.append(item)
 
         context['model_verbose_name'] = model.get_verbose_name()
-        context['allowed'] = allowed_sections
+        context['parent_pages'] = parent_pages
         return context

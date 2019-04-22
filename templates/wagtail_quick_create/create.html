@@ -19,7 +19,7 @@
     </header>
     <div class="nice-padding">
         <ul class="listing">
-            {% if allowed %}
+            {% if parent_pages %}
                 <div class="help-block help-info">
                     Choose a parent section for the new <strong>{{ model_verbose_name }}</strong>
                 </div>
@@ -27,7 +27,7 @@
                 <p class="help-block help-warning">There are no parent <strong>{{ model_verbose_name }}</strong> sections created for child pages to be added to yet...</p>
             {% endif %}
 
-            {% for page in allowed %}
+            {% for page in parent_pages %}
                 <li>
                     <a href="/admin/pages/add/{{page.app_label|lower}}/{{page.model|lower}}/{{page.id}}/" class="icon icon-plus-inverse icon-larger">
                         {% for parent in page.ancestors %}
