@@ -17,7 +17,7 @@ def filter_pages_by_permission(user, pages):
 
 
 class QuickCreateView(TemplateView):
-    template_name = "wagtail_quick_create/create.html"
+    template_name = "wagtailquickcreate/create.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

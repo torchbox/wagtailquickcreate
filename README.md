@@ -17,7 +17,7 @@ After installing the module, add wagtail_quick_create to your installed apps in 
 ```[python]
 INSTALLED_APPS = [
     ...
-    'yoursitename.wagtail_quick_create',
+    'yoursitename.wagtailquickcreate',
 ]
 ```
 
