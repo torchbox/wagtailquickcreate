@@ -36,8 +36,3 @@ WAGTAIL_QUICK_CREATE_DOCUMENTS = True
 WAGTAIL_QUICK_CREATE_REPLACE_SUMMARY_PANEL = False
 ```
 
-@TODO
-`pip install`
-- contributing
-- raising issues
-
