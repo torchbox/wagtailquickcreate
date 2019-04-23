@@ -28,7 +28,7 @@ class QuickCreatePanel:
 
         for i in page_models:
             page_models_html_chunk.append("""
-                <a href="/admin/quickcreate/create/{model_link}/"><button class="button bicolor icon icon-plus">Create {model_name}</button></a>""".format(model_link=i['link'], model_name=i['name']))
+                <a href="/admin/quickcreate/create/{model_link}/"><button class="button bicolor icon icon-plus">Add {model_name}</button></a>""".format(model_link=i['link'], model_name=i['name']))
 
         page_models_html_chunk = list(set(page_models_html_chunk))
 
@@ -43,7 +43,6 @@ class QuickCreatePanel:
 
         return mark_safe("""
             <section class="panel wagtail_quick_create summary nice-padding">
-            <h2>Quick Create</h2>
             {models}</section>""".format(models=''.join(page_models_html_chunk)))
 
 
