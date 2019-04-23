@@ -18,7 +18,7 @@ Install using pip:
 pip install wagtail-quick-create
 ```
 
-After installing the module, add wagtail_quick_create to your installed apps in your settings file:
+After installing the module, add `wagtailquickcreate` to your installed apps in your settings file:
 
 ```[python]
 INSTALLED_APPS = [
