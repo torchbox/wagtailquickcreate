@@ -36,11 +36,3 @@ class WagtailQuickCreateTests(WagtailPageTests):
         self.assertContains(response, 'Home > <strong>Foo Bar</strong>', html=True)
         self.assertContains(response, 'Home > <strong>Foo Bar 2</strong>', html=True)
         self.assertContains(response, 'Home > Foo Bar ><strong>Foo Bar 3</strong>', html=True)
-
-
-class ShortcutPanelTests(WagtailPageTests):
-    # Check the panel is being rendered
-    # TODO - test actual model link
-    def test_shortcuts_are_visible_in_admin(self):
-        response = self.client.get('/admin/')
-        self.assertContains(response, 'Quick Create')
