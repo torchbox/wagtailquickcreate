@@ -8,7 +8,7 @@ home screen to create defined pages under parent pages.
 from setuptools import setup, find_packages
 
 setup(name='wagtail-quick-create',
-      version='1.0.1',
+      version='1.0.2',
       description='Offer links to the admin user to create content under sections quickly.',
       long_description='Offer links to the admin user to create content under sections quickly.',
       url='https://github.com/kevinhowbrook/wagtailquickcreate',

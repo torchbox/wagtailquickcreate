@@ -27,11 +27,22 @@ INSTALLED_APPS = [
 ]
 ```
 
-Also add the following to your settings file:
+Also add the models you would like to create quick links for to your settings file as `'your_app_name.YourModelName'`:
 
+EG:
 ```
 WAGTAIL_QUICK_CREATE_PAGE_TYPES = ['news.NewsPage', 'events.EventPage']
-WAGTAIL_QUICK_CREATE_IMAGES = True
+```
+
+If you want the Quick Create links panel to _replace_ the wagtail summary panel, you can set this by adding the following to your settings
+
+```
+WAGTAIL_QUICK_CREATE_REPLACE_SUMMARY_PANEL = False
+```
+
+If you would like to offer image and document links, this can also be done by specifying the following in your settings:
+
+```
 WAGTAIL_QUICK_CREATE_DOCUMENTS = True
 WAGTAIL_QUICK_CREATE_REPLACE_SUMMARY_PANEL = False
 ```
