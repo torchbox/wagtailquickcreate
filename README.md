@@ -40,7 +40,7 @@ If you want the Quick Create links panel to _replace_ the wagtail summary panel,
 WAGTAIL_QUICK_CREATE_REPLACE_SUMMARY_PANEL = False
 ```
 
-If you would like to offer image and document links, this can also be done by specifying the following in your settings:
+If you would like to offer image and or document links, this can also be done by specifying the following in your settings:
 
 ```
 WAGTAIL_QUICK_CREATE_DOCUMENTS = True
