@@ -44,6 +44,6 @@ If you would like to offer image and or document links, this can also be done by
 
 ```
 WAGTAIL_QUICK_CREATE_DOCUMENTS = True
-WAGTAIL_QUICK_CREATE_REPLACE_SUMMARY_PANEL = False
+WAGTAIL_QUICK_CREATE_IMAGES = True
 ```
 
