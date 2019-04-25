@@ -4,11 +4,11 @@
 
 A panel is added to the admin home, offering a type:
 
-![Quick Create Panel example](https://i.imgur.com/DjgQB1R.png)
+![Quick Create Panel example](https://i.imgur.com/ssDighV.png)
 
 Clicking a create link will offer a parent selection for the new item
 
-![Parent selection example](https://i.imgur.com/TLlJA9P.png)
+![Parent selection example](https://i.imgur.com/6w5w6zD.png)
 
 ### Configuration
 
