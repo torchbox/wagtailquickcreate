@@ -14,7 +14,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 
 setup(name='wagtail-quick-create',
-      version='1.0.4',
+      version='1.0.5',
       description='Offer links to the admin user to create content under sections quickly.',
       long_description=long_description,
       long_description_content_type='text/markdown',
