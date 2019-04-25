@@ -37,7 +37,7 @@ WAGTAIL_QUICK_CREATE_PAGE_TYPES = ['news.NewsPage', 'events.EventPage']
 If you want the Quick Create links panel to _replace_ the wagtail summary panel, you can set this by adding the following to your settings
 
 ```
-WAGTAIL_QUICK_CREATE_REPLACE_SUMMARY_PANEL = False
+WAGTAIL_QUICK_CREATE_REPLACE_SUMMARY_PANEL = True
 ```
 
 If you would like to offer image and or document links, this can also be done by specifying the following in your settings:
