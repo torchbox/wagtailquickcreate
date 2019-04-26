@@ -47,3 +47,5 @@ WAGTAIL_QUICK_CREATE_DOCUMENTS = True
 WAGTAIL_QUICK_CREATE_IMAGES = True
 ```
 
+### Credits/Authors
+Concept created by Kate Statton - NYPR [@katestatton](https://twitter.com/katestatton)
