@@ -1,9 +1,6 @@
-import importlib
-from django.conf import settings
 from django.apps import apps
-
 from django.views.generic import TemplateView
-from django.shortcuts import redirect
+
 from wagtail.core.models import UserPagePermissionsProxy
 
 

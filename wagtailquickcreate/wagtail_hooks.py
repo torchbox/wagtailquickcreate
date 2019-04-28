@@ -1,7 +1,7 @@
+from django.apps import apps
+from django.conf import settings
 from django.conf.urls import url
 from django.utils.safestring import mark_safe
-from django.conf import settings
-from django.apps import apps
 
 from wagtail.admin.site_summary import SiteSummaryPanel
 from wagtail.core import hooks
@@ -32,7 +32,9 @@ class QuickCreatePanel:
 
         for i in page_models:
             page_models_html_chunk.append("""
-                <a href="/admin/quickcreate/create/{model_link}/"><button class="button bicolor icon icon-plus">Add {model_name}</button></a>""".format(model_link=i['link'], model_name=i['name']))
+                <a href="/admin/quickcreate/create/{model_link}/">
+                <button class="button bicolor icon icon-plus">Add {model_name}</button></a>""".format(
+                model_link=i['link'], model_name=i['name']))
 
         page_models_html_chunk = list(set(page_models_html_chunk))
 
@@ -42,7 +44,8 @@ class QuickCreatePanel:
             """)
         if settings.WAGTAIL_QUICK_CREATE_DOCUMENTS:
             page_models_html_chunk.append("""
-            <a href="/admin/documents/multiple/add/"><button class="button bicolor icon icon-plus">Add Document</button></a>
+            <a href="/admin/documents/multiple/add/"><button class="button bicolor icon icon-plus">
+            Add Document</button></a>
             """)
 
         return mark_safe("""
@@ -53,7 +56,8 @@ class QuickCreatePanel:
 @hooks.register('register_admin_urls')
 def urlconf_time():
     return [
-        url(r'^quickcreate/create/(?P<app>\D+)/(?P<model>\D+)/', QuickCreateView.as_view()),
+        url(r'^quickcreate/create/(?P<app>\D+)/(?P<model>\D+)/',
+            QuickCreateView.as_view()),
     ]
 
 
@@ -67,4 +71,3 @@ def add_quick_create_panel(request, panels):
     else:
         panels.append(QuickCreatePanel)
     return panels
-

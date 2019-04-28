@@ -1,4 +1,5 @@
 # Wagtail Quick Create
+[![CircleCI](https://circleci.com/gh/kevinhowbrook/wagtailquickcreate.svg?style=shield&circle)](https://circleci.com/gh/kevinhowbrook/wagtailquickcreate)
 
 ### Wagtail Quick Create offers shortcut links to create objects from models specified in your settings file.
 
