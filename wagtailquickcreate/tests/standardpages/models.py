@@ -1,5 +1,5 @@
-from django.conf import settings
 from django.db import models
+
 from wagtail.core.models import Page
 
 
@@ -12,4 +12,3 @@ class InformationPage(Page):
 class IndexPage(Page):
 
     introduction = models.TextField(blank=True)
-

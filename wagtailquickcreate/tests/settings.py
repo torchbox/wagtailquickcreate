@@ -1,6 +1,5 @@
 import os
 
-
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
@@ -59,7 +58,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'wagtailquickcreate.tests.urls'
 
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -71,16 +69,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'wagtail.contrib.settings.context_processors.settings',
-
-                # This is a custom context processor that lets us add custom
-                # global variables to all the templates.
-                #'wagtailquickcreate.utils.context_processors.global_vars',
             ],
         },
     },
 ]
-
-
 
 WAGTAIL_SITE_NAME = 'llama-savers'
 WAGTAIL_QUICK_CREATE_REPLACE_SUMMARY_PANEL = True
@@ -88,4 +80,3 @@ WAGTAIL_QUICK_CREATE_DOCUMENTS = True
 WAGTAIL_QUICK_CREATE_IMAGES = True
 WAGTAIL_QUICK_CREATE_PAGE_TYPES = ['wagtailquickcreate.tests.standardpages.InformationPage']
 USE_TZ = True
-

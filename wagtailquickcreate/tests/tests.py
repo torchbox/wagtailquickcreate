@@ -1,10 +1,10 @@
-from wagtail.tests.utils import WagtailTestUtils
-from wagtail.core.models import Page
-from django.conf import settings
 from django.test import TestCase
-from wagtailquickcreate.tests.standardpages.models import IndexPage
 from django.urls import reverse
-from django.contrib.auth import get_user_model
+
+from wagtail.core.models import Page
+from wagtail.tests.utils import WagtailTestUtils
+
+from wagtailquickcreate.tests.standardpages.models import IndexPage
 
 
 class WagtailQuickCreateTests(TestCase, WagtailTestUtils):
