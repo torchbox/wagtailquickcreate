@@ -14,12 +14,12 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 
 setup(name='wagtail-quick-create',
-      version='1.0.3',
+      version='1.0.7',
       description='Offer links to the admin user to create content under sections quickly.',
       long_description=long_description,
       long_description_content_type='text/markdown',
       url='https://github.com/kevinhowbrook/wagtailquickcreate',
-      author='Kevin Howbrook - Torchbox',
+      author='Kevin Howbrook - Torchbox, Kate Statton - NYPR',
       author_email='kevin.howbrook@torchbox.com',
       license='MIT',
       packages=find_packages(exclude=['tests*']),
