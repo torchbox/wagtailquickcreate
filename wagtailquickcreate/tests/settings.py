@@ -1,12 +1,11 @@
 import os
 
 
-
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
-SECRET_KEY = 'this is required'
+SECRET_KEY = 'not so secret'
 
 DATABASES = {
     'default': {
@@ -16,25 +15,23 @@ DATABASES = {
 }
 
 INSTALLED_APPS = [
-    'wagtailquickcreate',
 
-    'wagtail.contrib.modeladmin',
-    'wagtail.contrib.postgres_search',
+    'wagtail.contrib.styleguide',
+    'wagtail.contrib.routable_page',
+    'wagtail.contrib.frontend_cache',
     'wagtail.contrib.settings',
-    'wagtail.contrib.search_promotions',
+    'wagtail.contrib.modeladmin',
+    'wagtail.contrib.table_block',
     'wagtail.contrib.forms',
-    'wagtail.contrib.redirects',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
     'wagtail.snippets',
     'wagtail.documents',
     'wagtail.images',
-    'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
 
-    'modelcluster',
     'taggit',
 
     'django.contrib.admin',
@@ -42,12 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+    'wagtailquickcreate',
+    'wagtailquickcreate.tests.standardpages',
 
 ]
 
-ROOT_URLCONF = 'wagtailquickcreate.tests.urls'
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -59,6 +56,8 @@ MIDDLEWARE = [
 
     'wagtail.core.middleware.SiteMiddleware',
 ]
+
+ROOT_URLCONF = 'wagtailquickcreate.tests.urls'
 
 
 TEMPLATES = [
@@ -81,29 +80,12 @@ TEMPLATES = [
     },
 ]
 
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-]
-
-STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, 'static'),
-]
-
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
-class DisableMigrations(object):
-    def __contains__(self, item):
-        return True
-
-    def __getitem__(self, item):
-        return None
 
 
-MIGRATION_MODULES = DisableMigrations()
+WAGTAIL_SITE_NAME = 'llama-savers'
+WAGTAIL_QUICK_CREATE_REPLACE_SUMMARY_PANEL = True
+WAGTAIL_QUICK_CREATE_DOCUMENTS = True
+WAGTAIL_QUICK_CREATE_IMAGES = True
+WAGTAIL_QUICK_CREATE_PAGE_TYPES = ['wagtailquickcreate.tests.standardpages.InformationPage']
+USE_TZ = True
+
