@@ -1,0 +1,75 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$120000$0MlJbgNt3EXM$wP4KSUIZ/HCFYnG1Z/ZsadFvnzOAXM42YWyaEz8yuwg=",
+            "last_login": "2019-04-04T14:36:55.317Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "email@example.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2019-04-04T11:53:16.724Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$120000$DWm3O0jiLofZ$mgF1F11zilg90LYKMvyaydiIZUh11Ulf2cL46NebsXw=",
+            "last_login": null,
+            "is_superuser": true,
+            "username": "user",
+            "first_name": "",
+            "last_name": "",
+            "email": "email@example.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2019-04-04T11:53:16.898Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "pk": 1,
+        "model": "wagtailcore.page",
+        "fields": {
+            "title": "Root",
+            "numchild": 1,
+            "show_in_menus": false,
+            "live": true,
+            "depth": 1,
+            "content_type": [
+                "wagtailcore",
+                "page"
+            ],
+            "path": "0001",
+            "url_path": "/",
+            "slug": "root"
+        }
+    },
+
+    {
+        "pk": 2,
+        "model": "wagtailcore.page",
+        "fields": {
+            "title": "Home",
+            "numchild": 0,
+            "show_in_menus": false,
+            "live": true,
+            "depth": 2,
+            "content_type": [
+                "wagtailcore",
+                "page"
+            ],
+            "path": "00010001",
+            "url_path": "/home/",
+            "slug": "home"
+        }
+    }
+]

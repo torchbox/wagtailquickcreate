@@ -14,7 +14,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 
 setup(name='wagtail-quick-create',
-      version='1.0.6',
+      version='1.0.7',
       description='Offer links to the admin user to create content under sections quickly.',
       long_description=long_description,
       long_description_content_type='text/markdown',
@@ -22,7 +22,7 @@ setup(name='wagtail-quick-create',
       author='Kevin Howbrook - Torchbox, Kate Statton - NYPR',
       author_email='kevin.howbrook@torchbox.com',
       license='MIT',
-      packages=find_packages(),
+      packages=find_packages(exclude=['tests*']),
       include_package_data=True,
       install_requires=[
           'wagtail>=2.0',

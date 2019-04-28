@@ -18,6 +18,10 @@ class QuickCreatePanel:
         page_models = []
         for i in settings.WAGTAIL_QUICK_CREATE_PAGE_TYPES:
             item = {}
+            # When testing, or if the app/model has a specific name
+            # target the last 2 list values
+            i = i.split('.')
+            i = '.'.join(i[-2:])
             model = apps.get_model(i)
             item['link'] = model._meta.app_label + '/' + model.__name__
             item['name'] = model.get_verbose_name()
