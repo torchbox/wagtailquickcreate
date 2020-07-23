@@ -52,5 +52,6 @@ class QuickCreateView(TemplateView):
             parent_pages.append(item)
 
         context['model_verbose_name'] = model.get_verbose_name()
+        context['model_app'] = app
         context['parent_pages'] = parent_pages
         return context
