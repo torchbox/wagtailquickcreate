@@ -1,7 +1,7 @@
 from django.apps import apps
 from django.views.generic import TemplateView
 
-from wagtail.core.models import UserPagePermissionsProxy
+from wagtail.core.models import Page, UserPagePermissionsProxy
 
 
 # Helper function to work out page permissions
@@ -25,7 +25,8 @@ class QuickCreateView(TemplateView):
         _model = kwargs.pop('model')
         app = kwargs.pop('app')
         model = apps.get_model(app, _model)
-        parent_models = model.allowed_parent_page_models()
+        # Exclude base wagtail page class from possible parents
+        parent_models = [m for m in model.allowed_parent_page_models() if m is not Page]
 
         # With the 'allowed parent page' models we have found, get all
         # those objects from the database so we can offer them as parent pages
