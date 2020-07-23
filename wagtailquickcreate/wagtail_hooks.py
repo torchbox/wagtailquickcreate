@@ -33,13 +33,15 @@ class QuickCreatePanel:
             page_models.append(item)
 
         # Build up an html chunk for the links to be rendered in the panel
-        page_models_html_chunk = []
-
-        for i in page_models:
-            page_models_html_chunk.append("""
+        page_models_html_chunk = [
+            """
                 <a href="/admin/quickcreate/create/{model_link}/">
                 <button class="button bicolor icon icon-plus">Add {model_name}</button></a>""".format(
-                model_link=i['link'], model_name=i['name']))
+                model_link=i['link'], model_name=i['name']
+            )
+            for i in page_models
+        ]
+
 
         page_models_html_chunk = list(set(page_models_html_chunk))
 
