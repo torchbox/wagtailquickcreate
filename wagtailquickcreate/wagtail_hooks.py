@@ -13,10 +13,15 @@ class QuickCreatePanel:
     order = 50
 
     def render(self):
+        quick_create_page_types = getattr(settings, "WAGTAIL_QUICK_CREATE_PAGE_TYPES", [])
+
+        if not quick_create_page_types:
+            return ""
+
         # Make a list of the models with edit links
         # EG [{'link': 'news/NewsPage', 'name': 'News page'}]
         page_models = []
-        for i in settings.WAGTAIL_QUICK_CREATE_PAGE_TYPES:
+        for i in quick_create_page_types:
             item = {}
             # When testing, or if the app/model has a specific name
             # target the last 2 list values
@@ -38,11 +43,11 @@ class QuickCreatePanel:
 
         page_models_html_chunk = list(set(page_models_html_chunk))
 
-        if settings.WAGTAIL_QUICK_CREATE_IMAGES:
+        if getattr(settings, "WAGTAIL_QUICK_CREATE_IMAGES", False):
             page_models_html_chunk.append("""
             <a href="/admin/images/multiple/add/"><button class="button bicolor icon icon-plus">Add Image</button></a>
             """)
-        if settings.WAGTAIL_QUICK_CREATE_DOCUMENTS:
+        if getattr(settings, "WAGTAIL_QUICK_CREATE_DOCUMENTS", False):
             page_models_html_chunk.append("""
             <a href="/admin/documents/multiple/add/"><button class="button bicolor icon icon-plus">
             Add Document</button></a>
@@ -64,7 +69,7 @@ def urlconf_time():
 @hooks.register('construct_homepage_panels')
 def add_quick_create_panel(request, panels):
     # Replace the site summary panel with our custom panel
-    if settings.WAGTAIL_QUICK_CREATE_REPLACE_SUMMARY_PANEL:
+    if getattr(settings, "WAGTAIL_QUICK_CREATE_REPLACE_SUMMARY_PANEL", False):
         for i, v in enumerate(panels):
             if isinstance(v, SiteSummaryPanel):
                 panels[i] = QuickCreatePanel()
