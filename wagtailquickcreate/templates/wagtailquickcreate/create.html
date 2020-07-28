@@ -29,7 +29,7 @@
 
             {% for page in parent_pages %}
                 <li>
-                    <a href="/admin/pages/add/{{page.app_label|lower}}/{{page.model|lower}}/{{page.id}}/" class="icon icon-plus-inverse icon-larger">
+                    <a href="/admin/pages/add/{{model_app|lower}}/{{page.model|lower}}/{{page.id}}/" class="icon icon-plus-inverse icon-larger">
                         {% for parent in page.ancestors %}
                             {% if not parent.is_root %}
                                 {{ parent }} >
