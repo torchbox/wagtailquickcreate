@@ -26,7 +26,7 @@ class QuickCreateView(TemplateView):
         app = kwargs.pop('app')
         model = apps.get_model(app, _model)
         # Exclude base wagtail page class from possible parents
-        parent_models = [m for m in model.allowed_parent_page_models() if m is not isinstance(m, Page)]
+        parent_models = [m for m in model.allowed_parent_page_models() if m is not Page]
 
         # With the 'allowed parent page' models we have found, get all
         # those objects from the database so we can offer them as parent pages
