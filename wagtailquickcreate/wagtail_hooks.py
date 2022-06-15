@@ -4,7 +4,12 @@ from django.conf.urls import url
 from django.utils.safestring import mark_safe
 
 from wagtail.admin.site_summary import SiteSummaryPanel
-from wagtail.core import hooks
+from wagtail import VERSION as WAGTAIL_VERSION
+
+if WAGTAIL_VERSION >= (3, 0):
+    from wagtail import hooks
+else:
+    from wagtail.core import hooks
 
 from .views import QuickCreateView
 

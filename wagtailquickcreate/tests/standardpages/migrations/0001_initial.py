@@ -1,10 +1,6 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import django.db.models.deletion
-import modelcluster.fields
-import wagtail.core.blocks
-import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
