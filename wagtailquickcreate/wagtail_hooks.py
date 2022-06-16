@@ -1,18 +1,25 @@
 from django.apps import apps
 from django.conf import settings
-from django.conf.urls import url
+from django.urls import path
 from django.utils.safestring import mark_safe
 
-from wagtail.admin.site_summary import SiteSummaryPanel
-from wagtail.core import hooks
+from wagtail.admin.site_summary import SiteSummaryPanel, SummaryItem
+from wagtail import VERSION as WAGTAIL_VERSION
+
+if WAGTAIL_VERSION >= (3, 0):
+    from wagtail import hooks
+else:
+    from wagtail.core import hooks
 
 from .views import QuickCreateView
 
 
-class QuickCreatePanel:
+class QuickCreatePanel(SummaryItem):
+    template_name = "wagtailquickcreate/panel.html"
     order = 50
 
-    def render(self):
+    def get_context_data(self, parent_context):
+        context = super().get_context_data(parent_context)
         quick_create_page_types = getattr(settings, "WAGTAIL_QUICK_CREATE_PAGE_TYPES", [])
 
         if not quick_create_page_types:
@@ -46,23 +53,22 @@ class QuickCreatePanel:
 
         if getattr(settings, "WAGTAIL_QUICK_CREATE_IMAGES", False):
             page_models_html_chunk.append("""
-            <a href="/admin/images/multiple/add/"><button class="button bicolor icon icon-plus">Add Image</button></a>
-            """)
+                    <a href="/admin/images/multiple/add/"><button class="button bicolor icon icon-plus">Add Image</button></a>
+                    """)
         if getattr(settings, "WAGTAIL_QUICK_CREATE_DOCUMENTS", False):
             page_models_html_chunk.append("""
-            <a href="/admin/documents/multiple/add/"><button class="button bicolor icon icon-plus">
-            Add Document</button></a>
-            """)
-
-        return mark_safe("""
-            <section class="panel wagtail_quick_create summary nice-padding">
-            {models}</section>""".format(models=''.join(page_models_html_chunk)))
+                    <a href="/admin/documents/multiple/add/"><button class="button bicolor icon icon-plus">
+                    Add Document</button></a>
+                    """)
+        context["models"] = mark_safe(''.join(page_models_html_chunk))
+        return context
 
 
 @hooks.register('register_admin_urls')
 def urlconf_time():
+    # Example: http://127.0.0.1:8000/admin/quickcreate/create/standardpages/InformationPage/
     return [
-        url(r'^quickcreate/create/(?P<app>\D+)/(?P<model>\D+)/',
+        path('quickcreate/create/<str:app>/<str:model>/',
             QuickCreateView.as_view()),
     ]
 
@@ -73,7 +79,7 @@ def add_quick_create_panel(request, panels):
     if getattr(settings, "WAGTAIL_QUICK_CREATE_REPLACE_SUMMARY_PANEL", False):
         for i, v in enumerate(panels):
             if isinstance(v, SiteSummaryPanel):
-                panels[i] = QuickCreatePanel()
+                panels[i] = QuickCreatePanel(request)
     else:
-        panels.append(QuickCreatePanel)
+        panels.append(QuickCreatePanel(request))
     return panels

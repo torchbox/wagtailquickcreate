@@ -1,4 +1,5 @@
 import os
+from wagtail import VERSION as WAGTAIL_VERSION
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
@@ -29,7 +30,7 @@ INSTALLED_APPS = [
     'wagtail.documents',
     'wagtail.images',
     'wagtail.admin',
-    'wagtail.core',
+    "wagtail" if WAGTAIL_VERSION >= (3, 0) else "wagtail.core",
 
     'taggit',
 
@@ -52,8 +53,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    'wagtail.core.middleware.SiteMiddleware',
 ]
 
 ROOT_URLCONF = 'wagtailquickcreate.tests.urls'
