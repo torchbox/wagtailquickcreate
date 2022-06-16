@@ -1,6 +1,6 @@
 from django.apps import apps
 from django.conf import settings
-from django.urls import re_path
+from django.urls import path
 from django.utils.safestring import mark_safe
 
 from wagtail.admin.site_summary import SiteSummaryPanel, SummaryItem
@@ -66,8 +66,9 @@ class QuickCreatePanel(SummaryItem):
 
 @hooks.register('register_admin_urls')
 def urlconf_time():
+    # Example: http://127.0.0.1:8000/admin/quickcreate/create/standardpages/InformationPage/
     return [
-        re_path(r'^quickcreate/create/(?P<app>\D+)/(?P<model>\D+)/',
+        path('quickcreate/create/<str:app>/<str:model>/',
             QuickCreateView.as_view()),
     ]
 
