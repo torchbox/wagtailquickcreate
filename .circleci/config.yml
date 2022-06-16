@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/wagtailquickcreate
     docker:
-      - image: circleci/python:3.6.4
+      - image: circleci/python:3.8.0
         environment:
           PIPENV_VENV_IN_PROJECT: true
           DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
@@ -14,14 +14,14 @@ jobs:
     steps:
       - checkout
       - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.8/site-packages
       - run:
           command: |
             sudo pip install pipenv
             pipenv install wagtail
       - run:
           command: |
-            pipenv run "python runtests.py"
+            pipenv run python runtests.py
       - store_test_results:
           path: test-results
       - store_artifacts:
