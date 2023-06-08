@@ -1,18 +1,17 @@
 
 {% extends "wagtailadmin/base.html" %}
 {% load wagtailadmin_tags static i18n %}
-{% block titletag %}{% trans "Dashboard" %}{% endblock %}
-{% block bodyclass %}homepage{% endblock %}
+{% block titletag %}{% trans browser_title %}{% endblock %}
 
 
 {% block content %}
-    <header class="merged nice-padding">
+    <header class="w-header w-header--merged">
         <div class="row row-flush">
-            <div class="col1">
-                <div class="avatar"><img src="{% avatar_url user %}" alt="" /></div>
-            </div>
-            <div class="col9">
-                <h1>Add {{ model_verbose_name }}</h1>
+            <div class="col">
+                <h1 class="w-header__title">
+                    <img src="{% avatar_url user %}" alt="" class="avatar"/>
+                    Add {{ model_verbose_name }}
+                </h1>
                 <h2>{{ user.get_full_name|default:user.get_username }}</h2>
             </div>
         </div>
