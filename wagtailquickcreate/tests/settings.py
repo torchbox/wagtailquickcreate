@@ -78,3 +78,5 @@ WAGTAIL_QUICK_CREATE_DOCUMENTS = True
 WAGTAIL_QUICK_CREATE_IMAGES = True
 WAGTAIL_QUICK_CREATE_PAGE_TYPES = ['wagtailquickcreate.tests.standardpages.InformationPage']
 USE_TZ = True
+
+WAGTAILADMIN_BASE_URL = 'http://localhost:8000'
