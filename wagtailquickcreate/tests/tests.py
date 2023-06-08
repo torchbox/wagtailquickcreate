@@ -33,9 +33,9 @@ class WagtailQuickCreateTests(TestCase, WagtailTestUtils):
 
     def test_quickcreate_panel_links(self):
         response = self.client.get('/admin/')
-        self.assertContains(response, 'Add Image', html=True)
-        self.assertContains(response, 'Add Document', html=True)
-        self.assertContains(response, 'Add Information page', html=True)
+        self.assertTrue('Add Image' in str(response.content))
+        self.assertTrue('Add Document' in str(response.content))
+        self.assertTrue('Add Information page' in str(response.content))
 
     def test_first_level_index_page_in_shortcut_view(self):
         response = self.client.get('/admin/quickcreate/create/standardpages/informationpage/')
