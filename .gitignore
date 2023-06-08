@@ -6,3 +6,5 @@ dist/
 .tox/
 Pipfile
 venv
+testapp
+.DS_Store
