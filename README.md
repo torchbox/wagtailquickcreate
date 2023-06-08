@@ -5,11 +5,11 @@
 
 A panel is added to the admin home, offering a type:
 
-![Quick Create Panel example](https://i.imgur.com/ssDighV.png)
+![Quick Create Panel example](./docs/images/dashboard.png)
 
 Clicking a create link will offer a parent selection for the new item
 
-![Parent selection example](https://i.imgur.com/6w5w6zD.png)
+![Parent selection example](./docs/images/create.png)
 
 ### Note on parent pages
 Wagtailquickcreate needs the [`parent_page_types`](http://docs.wagtail.io/en/v2.5.1/reference/pages/model_reference.html#wagtail.core.models.Page.parent_page_types) set on the model you wish to include so it can successfully provide the parent page selection. If this isn't specified, you will likely see every page offered as a parent, this will not work as it's looking up pages using `wagtail.core.models.Page` and this core wagtail class has `is_creatable = False`
