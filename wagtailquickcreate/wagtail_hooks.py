@@ -39,7 +39,11 @@ class QuickCreatePanel(SummaryItem):
         page_models_html_chunk = [
             """
                 <a href="/admin/quickcreate/create/{model_link}/">
-                <button class="button bicolor icon icon-plus">Add {model_name}</button></a>""".format(
+                <button class="button bicolor button--icon margin-bottom-sm" style="margin-right:6px;margin-bottom:6px;">
+                <span class="icon-wrapper">
+                <svg class="icon icon-plus icon" aria-hidden="true"><use href="#icon-plus"></use></svg>
+                </span>
+                Add {model_name}</button></a>""".format(
                 model_link=i['link'], model_name=i['name']
             )
             for i in page_models
@@ -49,11 +53,20 @@ class QuickCreatePanel(SummaryItem):
 
         if getattr(settings, "WAGTAIL_QUICK_CREATE_IMAGES", False):
             page_models_html_chunk.append("""
-                    <a href="/admin/images/multiple/add/"><button class="button bicolor icon icon-plus">Add Image</button></a>
+                    <a href="/admin/images/multiple/add/">
+                    <button class="button bicolor button--icon" style="margin-right:6px;margin-bottom:6px;">
+                    <span class="icon-wrapper">
+                    <svg class="icon icon-plus icon" aria-hidden="true"><use href="#icon-plus"></use></svg>
+                    </span>
+                    Add Image</button></a>
                     """)
         if getattr(settings, "WAGTAIL_QUICK_CREATE_DOCUMENTS", False):
             page_models_html_chunk.append("""
-                    <a href="/admin/documents/multiple/add/"><button class="button bicolor icon icon-plus">
+                    <a href="/admin/documents/multiple/add/">
+                    <button class="button bicolor button--icon" style="margin-right:6px;margin-bottom:6px;">
+                    <span class="icon-wrapper">
+                    <svg class="icon icon-plus icon" aria-hidden="true"><use href="#icon-plus"></use></svg>
+                    </span>
                     Add Document</button></a>
                     """)
         context["models"] = mark_safe(''.join(page_models_html_chunk))
