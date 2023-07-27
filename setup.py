@@ -13,17 +13,33 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 
-setup(name='wagtail-quick-create',
-      version='2.0.0',
-      description='Offer links to the admin user to create content under sections quickly.',
-      long_description=long_description,
-      long_description_content_type='text/markdown',
-      url='https://github.com/kevinhowbrook/wagtailquickcreate',
-      author='Kevin Howbrook - Torchbox, Kate Statton - NYPR',
-      author_email='kevin.howbrook@torchbox.com',
-      license='MIT',
-      packages=find_packages(exclude=['tests*']),
-      include_package_data=True,
-      install_requires=[
-          'wagtail>=4.1',
-      ])
+setup(
+    name='wagtail-quick-create',
+    version='2.0.0',
+    description='Offer links to the admin user to create content under sections quickly.',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
+    url='https://github.com/kevinhowbrook/wagtailquickcreate',
+    author='Kevin Howbrook - Torchbox, Kate Statton - NYPR',
+    author_email='kevin.howbrook@torchbox.com',
+    license='MIT',
+    packages=find_packages(exclude=['tests*']),
+    include_package_data=True,
+    install_requires=[
+        'wagtail>=4.1',
+    ],
+    classifiers=[
+        'Environment :: Web Environment',
+        'Intended Audience :: Developers',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Framework :: Wagtail',
+        'Framework :: Wagtail :: 4',
+        'Framework :: Wagtail :: 5',
+    ],
+)
