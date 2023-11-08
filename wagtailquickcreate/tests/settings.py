@@ -1,7 +1,5 @@
 import os
 
-from wagtail import VERSION as WAGTAIL_VERSION
-
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
@@ -21,7 +19,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.routable_page',
     'wagtail.contrib.frontend_cache',
     'wagtail.contrib.settings',
-    'wagtail_modeladmin' if WAGTAIL_VERSION >= (5, 1) else 'wagtail.contrib.modeladmin',
+    'wagtail.contrib.modeladmin',
     'wagtail.contrib.table_block',
     'wagtail.contrib.forms',
     'wagtail.embeds',
@@ -31,7 +29,7 @@ INSTALLED_APPS = [
     'wagtail.documents',
     'wagtail.images',
     'wagtail.admin',
-    'wagtail',
+    "wagtail",
 
     'taggit',
 

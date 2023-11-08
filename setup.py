@@ -28,9 +28,6 @@ setup(
     install_requires=[
         'wagtail>=4.1',
     ],
-    tests_require=[
-        'wagtail_modeladmin>=1.0',
-    ]
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
