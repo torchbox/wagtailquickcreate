@@ -13,7 +13,7 @@ jobs:
       matrix:
         include:
           - python: 3.9
-            wagtail: wagtail>=4.1,<5.2
+            wagtail: wagtail>=4.1
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
