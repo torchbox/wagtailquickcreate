@@ -80,3 +80,5 @@ WAGTAIL_QUICK_CREATE_PAGE_TYPES = ['wagtailquickcreate.tests.standardpages.Infor
 USE_TZ = True
 
 WAGTAILADMIN_BASE_URL = 'http://localhost:8000'
+
+STATIC_URL = "/static/"

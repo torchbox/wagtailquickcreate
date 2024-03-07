@@ -1,15 +1,14 @@
 from django.apps import apps
 from django.views.generic import TemplateView
 
-from wagtail.models import Page, UserPagePermissionsProxy
+from wagtail.models import Page
 
 
 # Helper function to work out page permissions
 def filter_pages_by_permission(user, pages):
-    user_permissions = UserPagePermissionsProxy(user)
     return [
         page for page in pages
-        if user_permissions.for_page(page).can_add_subpage()
+        if page.permissions_for_user(user).can_add_subpage()
     ]
 
 
