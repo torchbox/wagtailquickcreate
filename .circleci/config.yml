@@ -7,7 +7,7 @@ jobs:
         environment:
           PIPENV_VENV_IN_PROJECT: true
           DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
-      - image: cimg/postgres:16.2.0
+      - image: cimg/postgres:16.2
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: circle_test
