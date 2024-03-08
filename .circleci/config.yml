@@ -3,18 +3,17 @@ jobs:
   build:
     working_directory: ~/wagtailquickcreate
     docker:
-      - image: circleci/python:3.8.0
+      - image: cimg/python:3.12.1
         environment:
           PIPENV_VENV_IN_PROJECT: true
           DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
-      - image: circleci/postgres:9.6.2
+      - image: cimg/postgres:16.2
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: circle_test
     steps:
       - checkout
-      - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.8/site-packages
+      - run: sudo apt-get update && sudo apt-get install -y python3-pip
       - run:
           command: |
             sudo pip install pipenv
