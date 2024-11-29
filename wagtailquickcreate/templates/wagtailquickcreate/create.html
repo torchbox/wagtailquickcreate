@@ -1,44 +1,58 @@
 
-{% extends "wagtailadmin/base.html" %}
+{% extends "wagtailadmin/generic/listing.html" %}
 {% load wagtailadmin_tags static i18n %}
 {% block titletag %}{% trans browser_title %}{% endblock %}
 
-
 {% block content %}
-    <header class="w-header w-header--merged">
-        <div class="row row-flush">
-            <div class="col">
-                <h1 class="w-header__title">
-                    <img src="{% avatar_url user %}" alt="" class="avatar"/>
-                    Add {{ model_verbose_name }}
-                </h1>
-                <h2>{{ user.get_full_name|default:user.get_username }}</h2>
+
+    {% block header %}
+    <header class="w-header">
+        <div class="row">
+            <div class="left">
+                <div class="col">
+                    <h1 class="w-header__title" id="header-title">
+                        <svg class="icon icon-doc-empty-inverse w-header__glyph" aria-hidden="true">
+                            <use href="#icon-doc-empty-inverse"></use>
+                        </svg>Add <span class="w-header__subtitle">{{ model_verbose_name }}</span>
+                    </h1>
+                </div>
             </div>
         </div>
     </header>
-    <div class="nice-padding">
-        <ul class="listing">
-            {% if parent_pages %}
-                <div class="help-block help-info">
-                    Choose a parent section for the new <strong>{{ model_verbose_name }}</strong>
-                </div>
-            {% else %}
-                <p class="help-block help-warning">There are no parent <strong>{{ model_verbose_name }}</strong> sections created for child pages to be added to yet...</p>
-            {% endif %}
+    {% endblock %}
 
+    {% block listing %}
+    <div class="nice-padding">
+        {% if parent_pages %}
+        <p>Choose a parent section for the new <strong>{{ model_verbose_name }}</strong></p>
+        {% else %}
+        <p class="help-block help-warning">
+            <svg class="icon icon-warning icon" aria-hidden="true"><use href="#icon-warning"></use></svg>
+            There are no parent <strong>{{ model_verbose_name }}</strong> sections created for child pages to be added to yet...
+        </p>
+        {% endif %}
+        <ul class="listing">
             {% for page in parent_pages %}
                 <li>
-                    <a href="/admin/pages/add/{{model_app|lower}}/{{page.model|lower}}/{{page.id}}/" class="icon icon-plus-inverse icon-larger">
-                        {% for parent in page.ancestors %}
-                            {% if not parent.is_root %}
-                                {{ parent }} >
-                            {% endif %}
-                        {% endfor %}
-                        <strong>{{ page.title }}</strong>
-                    </a>
+                    <div class="row row-flush">
+                        <div class="col12">
+                            <a href="/admin/pages/add/{{model_app|lower}}/{{page.model|lower}}/{{page.id}}/" class="icon icon-plus-inverse icon-larger">
+                                <svg class="icon icon-crosshairs default w-mr-1 w-align-middle" aria-hidden="true"><use href="#icon-crosshairs"></use></svg>
+                                {% for parent in page.ancestors %}
+                                    {% if not parent.is_root %}
+                                        {{ parent }} >
+                                    {% endif %}
+                                {% endfor %}
+                                <strong>{{ page.title }}</strong>
+                            </a>
+                        </div>
+
+                    </div>
                 </li>
             {% endfor %}
         </ul>
     </div>
+    {% endblock %}
 
 {% endblock %}
+

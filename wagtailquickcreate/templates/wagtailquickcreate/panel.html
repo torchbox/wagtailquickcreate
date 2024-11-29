@@ -1,3 +1,50 @@
-<section class="panel wagtail_quick_create summary nice-padding">
-    {{ models }}
+<section class="w-panel w-panel--dashboard" id="quickcreate-section" aria-labelledby="quickcreate-heading" data-panel>
+    <div class="w-panel__header">
+        <a class="w-panel__anchor w-panel__anchor--prefix" href="#quickcreate-section" data-panel-anchor=""
+            aria-labelledby="quickcreate-heading">
+            <svg class="icon icon-link w-panel__icon" aria-hidden="true">
+                <use href="#icon-link"></use>
+            </svg>
+        </a>
+        <button class="w-panel__toggle" type="button" aria-label="Toggle section" aria-describedby="quickcreate-heading"
+            data-panel-toggle="" aria-controls="quickcreate-content" aria-expanded="{{ initial_collapsed.aria_expanded }}">
+
+            <svg class="icon icon-placeholder w-panel__icon" aria-hidden="true">
+                <use href="#icon-placeholder"></use>
+            </svg>
+        </button>
+
+        <h2 class="w-panel__heading " id="quickcreate-heading" data-panel-heading="">
+            <span data-panel-heading-text="">Quick Create</span>
+        </h2>
+
+        <a class="w-panel__anchor w-panel__anchor--suffix" href="#quickcreate-section"
+            aria-labelledby="quickcreate-heading">
+            <svg class="icon icon-link w-panel__icon" aria-hidden="true">
+                <use href="#icon-link"></use>
+            </svg>
+        </a>
+        <div class="w-panel__divider"></div>
+
+    </div>
+    <div id="quickcreate-content" class="w-panel__content" {% if initial_collapsed.hidden %}hidden="{{ initial_collapsed.hidden }}"{% endif %}>
+        <table class="listing listing--dashboard listing-quickcreate">
+            <tbody>
+                <tr>
+                    <td>
+                        {% for button in model_buttons %}
+                        {% include "wagtailquickcreate/quickcreate_button.html" with button=button %}
+                        {% endfor %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        {% for error in model_button_errors %}
+        <div class="help-block help-warning">
+            <svg class="icon icon-warning icon" aria-hidden="true"><use href="#icon-warning"></use></svg>
+            <strong>{{ error }}</strong> found in WAGTAIL_QUICK_CREATE_PAGE_TYPES does not exist.
+        </div>
+        {% endfor %}
+        
+    </div>
 </section>

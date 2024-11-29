@@ -1,14 +1,14 @@
 # Wagtail Quick Create
 
-## Wagtail Quick Create offers shortcut links to create objects from models specified in your settings file.
+**Add shortcut links to the admin Home page** create objects from models specified in your settings file.
 
-A panel is added to the admin home, offering a type:
+A panel is added to the admin home, offering a model type:
 
-![Quick Create Panel example](./docs/images/dashboard.png)
+![Quick Create Panel example](./docs/images/dashboard.jpg)
 
-Clicking a create link will offer a parent selection for the new item
+Clicking a create link will bring to the generic Wagtail add page for the model type:
 
-![Parent selection example](./docs/images/create.png)
+![Parent selection example](./docs/images/create.jpg)
 
 ## Note on parent pages
 
@@ -33,16 +33,10 @@ INSTALLED_APPS = [
 
 Also add the models you would like to create quick links for to your settings file as `'your_app_name.YourModelName'`:
 
-EG:
+example setting:
 
 ```python
 WAGTAIL_QUICK_CREATE_PAGE_TYPES = ['news.NewsPage', 'events.EventPage']
-```
-
-If you want the Quick Create links panel to _replace_ the wagtail summary panel, you can set this by adding the following to your settings
-
-```python
-WAGTAIL_QUICK_CREATE_REPLACE_SUMMARY_PANEL = True
 ```
 
 If you would like to offer image and or document links, this can also be done by specifying the following in your settings:
@@ -51,6 +45,20 @@ If you would like to offer image and or document links, this can also be done by
 WAGTAIL_QUICK_CREATE_DOCUMENTS = True
 WAGTAIL_QUICK_CREATE_IMAGES = True
 ```
+
+### Customising the panel
+
+The panel is not collapsed by default, but you can collapse it by adding the following to your settings:
+
+```python
+WAGTAIL_QUICK_CREATE_INITIAL_COLLAPSED = True
+```
+
+## Compatibility
+
+This package is compatible with Wagtail 6.3 and above.
+
+If you are using a version of Wagtail below 6.3, you can use the [2.0.1](https://pypi.org/project/wagtail-quick-create/2.0.1/) release of this package.
 
 ## Contributing
 
